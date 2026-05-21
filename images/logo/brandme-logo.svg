@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 217 56" width="217" height="56" role="img" aria-label="BrandME Logo">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Syne:wght@800&amp;display=swap');
+      .w { font-family: 'Syne', 'Arial Black', sans-serif; font-weight: 800; font-size: 30px; letter-spacing: -1px; }
+      .t { font-family: 'Syne', 'Arial Black', sans-serif; font-weight: 800; font-size: 21px; }
+    </style>
+  </defs>
+  <rect x="1" y="7" width="42" height="47" rx="9" fill="#FF4D1C"/>
+  <circle cx="22" cy="7" r="5.5" fill="#0D0D0D"/>
+  <text x="5" y="42" class="t" fill="#0D0D0D">BM</text>
+  <text x="54" y="43" class="w" fill="#FFFFFF">Brand</text>
+  <text x="157" y="43" class="w" fill="#FF4D1C">ME</text>
+</svg>

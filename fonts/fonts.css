@@ -1,0 +1,16 @@
+@font-face {
+    font-family: "DM Sans";
+    src: url("DMSans-Regular.ttf");
+}
+
+@font-face {
+    font-family: Syne;
+    src: url("Syne-VariableFont_wght.ttf");
+}
+
+:root{
+
+    /* root variables  */
+    --syne: Syne, sans-serif;
+    --dm: "DM Sans", sans-serif;
+}
