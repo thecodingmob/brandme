@@ -44,6 +44,12 @@ main > section {
   margin-block: 5rem;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 h1 {
   font-size: clamp(1rem, 10vw + 1rem, 5.5rem);
   line-height: 1.2;
@@ -51,7 +57,8 @@ h1 {
 
 h2 {
   color: var(--flame);
-  font-size: clamp(1rem, 10vw + 1rem, 2.5rem);
+  font-size: clamp(1rem, 10vw + 1rem, 2.2rem);
+  line-height: 1.2;
 }
 
 /* header styles start */
@@ -401,6 +408,104 @@ nav a:hover {
 }
 
 /* pricing end */
+
+/* work / portfolio start */
+
+.work-grid {
+  display: grid;
+  gap: 20px;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  @media (width < 48em) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.work-card {
+  background-color: var(--charcoal);
+  border-radius: 12px;
+
+  overflow: clip;
+  backdrop-filter: 20px;
+  border: 1px solid var(--mist);
+  transition: transform 0.3s ease-in-out;
+}
+
+.work-card:hover {
+  transform: scale(1.05) translateY(5px);
+}
+
+.work-card-body {
+  padding-inline: 20px;
+  padding-block: 10px;
+}
+
+.work-card-foot {
+  display: flex;
+  justify-content: space-around;
+
+  padding-block-end: 10px;
+}
+
+.work-card-foot a {
+  padding: 0.5rem;
+  background-color: var(--void);
+  border-radius: 10px;
+  color: var(--flame);
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.work-card-foot a:hover {
+  color: var(--void);
+  background-color: var(--flame);
+}
+
+/* work / portfolio end  */
+
+/* testimonials  */
+
+.testimonial-card {
+  border: 1px solid var(--mist);
+  border-radius: 10px;
+  padding: 0.5rem;
+  background-color: var(--void);
+
+  background: url("../images/icons/bg-pattern-quotation.svg") var(--void);
+  background-position: right top -15px;
+  background-repeat: no-repeat;
+
+  i {
+    font-size: 1.5rem;
+    color: var(--gold);
+  }
+
+  i:nth-child(even) {
+    transform: translateY(-5px);
+  }
+  i:nth-child(3) {
+    transform: translateY(-10px);
+  }
+}
+
+.testimonial-head {
+  padding-block: 0.5rem;
+  text-align: center;
+}
+
+.testimonial-body {
+  text-align: center;
+}
+
+.testimonial-foot {
+  display: flex;
+  gap: 5px;
+}
+
+.testimonial-card > * {
+  margin-block: 12px;
+}
 
 /* contact  */
 
