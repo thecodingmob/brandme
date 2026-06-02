@@ -29,15 +29,26 @@ html {
 
 body {
   background-color: var(--ink);
-  background-image:
-    linear-gradient(rgba(255, 77, 28, 0.07) 2px, transparent 2px),
-    linear-gradient(90deg, rgba(255, 77, 28, 0.07) 2px, transparent 2px);
-  background-size: 40px 40px;
-  color: var(--white);
+  color: var(--cream);
   font-family: var(--dm);
   line-height: 1.6;
 
   font-size: 18px;
+  min-height: 100vh;
+}
+
+body::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(18deg, var(--flame), var(--gold));
+  background-size: 100%;
+
+  clip-path: circle(20% at right 40%);
+  z-index: -1;
 }
 
 main > section {
@@ -67,130 +78,155 @@ header {
   display: flex;
   align-items: center;
 
-  justify-content: space-evenly;
-
-  padding-block-start: 1.875rem;
-  padding-block-end: 1.2rem;
+  padding-block: 1.5rem;
+  justify-content: space-between;
 }
 
-#navLinks.open {
-  height: auto;
-  transition: all 0.3s ease;
+.menuToggle {
+  display: none;
 }
 
-nav ul {
+.primary-navigation {
   display: flex;
+  gap: 2rem;
   list-style: none;
-  gap: 45px;
-  align-items: center;
+
+  padding: 0;
+  margin: 0;
+  background: var(--void);
+  overflow: clip;
 }
 
-nav a {
-  display: inline-block;
-  color: var(--cream);
+/* @supports (backdrop-filter: blur(15px)) {
+  .primary-navigation {
+    background: hsl(0 0 100% / 0.2);
+    backdrop-filter: blur(15px);
+  }
+} */
+
+.primary-navigation a {
   text-decoration: none;
-  font-weight: 600;
-  padding: 0.5rem;
-  border-radius: 10px;
-
-  transition: background-color 0.3s;
+  color: var(--white);
 }
 
-nav a:hover {
-  background-color: var(--flame);
-  color: var(--cream);
-}
-
-#menuToggle {
-  background: none;
-  border: none;
-  font-size: 1.7rem;
+.primary-navigation a:hover {
   color: var(--flame);
 }
 
-@media (width < 48rem) {
-  nav {
+@media (max-width: 55em) {
+  .primary-navigation {
+    position: fixed;
+    inset: 0 0 0 30%;
+    z-index: 1000;
+
+    flex-direction: column;
+    padding: min(20vh, 5rem) 2rem;
+
+    transform: translateX(100%);
+    transition: transform 350ms ease-in;
+  }
+
+  .primary-navigation[data-visible="true"] {
+    transform: translateX(0%);
+  }
+
+  .menuToggle {
+    display: block;
     position: absolute;
-    top: 100px;
-    width: 90%;
+    background-image: url(../images/icons/menu_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg);
     background-color: transparent;
-    left: 22px;
-
-    ul {
-      flex-direction: column;
-      gap: 0;
-      background-color: var(--charcoal);
-      border-radius: 10px;
-
-      overflow: hidden;
-    }
-
-    li {
-      width: 100%;
-      border-bottom: 1px solid var(--mist);
-      border-radius: 10px;
-    }
-
-    li:nth-child(7) {
-      border: none;
-    }
-
-    a {
-      width: 100%;
-      color: var(--flame);
-      padding-block: 1rem;
-    }
-
-    .sign-up {
-      color: var(--gold);
-    }
-  }
-
-  #navLinks {
-    height: 0;
-    /* transition: all 0.285s ease;  */
-  }
-
-  header {
-    justify-content: space-between;
-    padding-inline: 1.875rem;
-
-    position: relative;
-  }
-}
-
-@media (width >= 48rem) {
-  #menuToggle {
-    display: none;
-  }
-
-  nav .sign-up {
-    border-radius: 12px;
-    background-color: var(--flame);
-    border: 3px solid var(--flame);
-    transition:
-      color 0.2s,
-      background 0.2s;
-  }
-
-  nav .sign-up:hover {
-    background: none;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 0;
+    aspect-ratio: 1;
+    width: 2rem;
+    right: 1rem;
+    z-index: 9999;
+    font-size: 1.3rem;
     color: var(--flame);
   }
+
+  .menuToggle[aria-expanded="true"] {
+    background-image: url(../images/icons/close_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg);
+  }
 }
 
+/* @media (min-width: 35em) {
+ 
+} */
+
+@media (min-width: 55em) {
+  .primary-navigation {
+    border-radius: 50vw 0 0 50vw;
+  }
+  .primary-navigation a {
+    padding: 1rem;
+    display: inline-block;
+  }
+
+  .primary-navigation .sign-up {
+    margin-block-start: 0.5em;
+  }
+}
+
+.primary-navigation .sign-up {
+  border: 2px solid var(--gold);
+  padding: 0.25em;
+  border-radius: 50vw;
+  background-color: var(--gold);
+  color: var(--void);
+  font-weight: 600;
+}
+
+.primary-navigation .sign-up:hover {
+  background: var(--void);
+  color: var(--gold);
+}
+
+.logo-div {
+  background-color: var(--void);
+  border-radius: 0 50vw 50vw 0;
+  padding-block-end: 0.6rem;
+  padding-inline-start: 0.6rem;
+}
 /* header styles end  */
 
 /* hero section start */
 
 .hero {
-  border-radius: 5%;
-  margin-block-start: 0;
-  padding: 1rem;
+  text-align: center;
+  position: relative;
 }
 
-.hero .wrapper > * {
-  margin-block: 2rem;
+.hero::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--flame), var(--gold));
+  background-size: 20%;
+
+  clip-path: circle(10% at 10% 80%);
+  z-index: -1;
+}
+
+.hero-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-block-start: 1rem;
+  gap: 1rem;
+
+  @media (max-width: 55em) {
+    flex-direction: column;
+
+    a {
+      width: 60%;
+    }
+  }
 }
 
 /* hero section end  */
@@ -231,7 +267,7 @@ nav a:hover {
   width: min(200px, 100%);
 
   strong {
-    font-size: 2.5rem;
+    font-size: 1.5em;
   }
 
   small {
@@ -410,6 +446,9 @@ nav a:hover {
 /* pricing end */
 
 /* work / portfolio start */
+.work {
+  position: relative;
+}
 
 .work-grid {
   display: grid;
@@ -423,11 +462,11 @@ nav a:hover {
 }
 
 .work-card {
-  background-color: var(--charcoal);
+  background: hsl(0, 0, 100% / 0.2);
   border-radius: 12px;
 
   overflow: clip;
-  backdrop-filter: 20px;
+  backdrop-filter: blur(10px);
   border: 1px solid var(--mist);
   transition: transform 0.3s ease-in-out;
 }
@@ -730,6 +769,15 @@ input[type="submit"] {
 }
 
 /* utility classes  */
+.padding-inline {
+  padding-inline: 30px;
+}
+
+@media (min-width: 35em) {
+  .padding-inline {
+    padding-inline: 150px;
+  }
+}
 
 .wrapper {
   max-inline-size: 920px;

@@ -1,9 +1,14 @@
-const nav = document.getElementById("navLinks");
-const menu = document.getElementById("menuToggle");
+const primaryNav = document.querySelector(".primary-navigation");
+const navToggle = document.querySelector(".menuToggle");
 
-menu.addEventListener("click", () => {
-  const icon = menu.querySelector("i");
-  icon.classList.toggle("fa-bars");
-  icon.classList.toggle("fa-times");
-  nav.classList.toggle("open");
+navToggle.addEventListener("click", () => {
+  const visibility = primaryNav.getAttribute("data-visible");
+
+  if (visibility === "false") {
+    primaryNav.setAttribute("data-visible", true);
+    navToggle.setAttribute("aria-expanded", true);
+  } else {
+    primaryNav.setAttribute("data-visible", false);
+    navToggle.setAttribute("aria-expanded", false);
+  }
 });

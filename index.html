@@ -24,38 +24,45 @@
     <!-- favicon  -->
     <link
       rel="shortcut icon"
-      href="images/logo/brandme-icon.svg"
+      href="images/logo/brandme-favicon.ico"
       type="image/x-icon"
     />
   </head>
   <body>
     <header>
       <!-- logo here  -->
-      <a href="index.html">
-        <img
-          src="images/logo/brandme-logo.svg"
-          alt="brandme logo"
-          height="40"
-        />
-      </a>
+      <div class="logo-div">
+        <a href="index.html" class="logo">
+          <img
+            src="images/logo/brandme-logo.svg"
+            alt="brandme logo"
+            height="40"
+          />
+        </a>
+      </div>
+
+      <button
+        class="menuToggle"
+        aria-controls="primary-navigation"
+        aria-expanded="false"
+      ></button>
+
       <!-- navigation  -->
       <nav>
-        <ul id="navLinks">
+        <ul
+          id="primary-navigation"
+          data-visible="false"
+          class="primary-navigation"
+        >
           <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="#services">Services</a></li>
+          <li><a href="about.html">About</a></li>
           <li><a href="#pricing">Pricing</a></li>
           <li><a href="#work">Portfolio</a></li>
-          <li><a href="#contact">Contact Us</a></li>
           <li>
             <a href="forms.html#sign-up" class="sign-up">Sign Up / Sign In</a>
           </li>
         </ul>
       </nav>
-
-      <button id="menuToggle">
-        <i class="fa-solid fa-bars"></i>
-      </button>
     </header>
 
     <main>
@@ -63,20 +70,17 @@
       <section class="hero" id="hero">
         <div class="wrapper">
           <div class="hero-header">
-            <div class="hero-eyebrow">
-              <i class="fa-solid fa-star"></i>
-            </div>
             <h1>
-              Brand<span class="title">ME</span> <br />
-              YOUR BRAND. <br />
+              YOUR <span class="title"> BRAND</span>,<br />
               YOUR WEB.
             </h1>
 
-            <p>
-              A done-for-you web design platform built for SMEs, businesses and
-              emerging brands who <br />
-              deserve a powerful online presence.
-            </p>
+            <div class="padding-inline">
+              <p>
+                A done-for-you web design platform built for SMEs, businesses
+                and emerging brands who deserve a powerful online presence.
+              </p>
+            </div>
           </div>
 
           <div class="hero-footer">
