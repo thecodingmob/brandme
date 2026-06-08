@@ -38,9 +38,20 @@
           height="40"
         />
       </a>
+
+      <button
+        class="menuToggle"
+        aria-controls="primary-navigation"
+        aria-expanded="false"
+      ></button>
+
       <!-- navigation  -->
       <nav>
-        <ul id="navLinks">
+        <ul
+          id="primary-navigation"
+          data-visible="false"
+          class="primary-navigation"
+        >
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html" class="active">About Us</a></li>
           <li><a href="index.html#services">Services</a></li>
@@ -52,10 +63,6 @@
           </li>
         </ul>
       </nav>
-
-      <button id="menuToggle">
-        <i class="fa-solid fa-bars"></i>
-      </button>
     </header>
 
     <main class="about-page">

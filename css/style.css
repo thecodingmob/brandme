@@ -72,6 +72,10 @@ h2 {
   line-height: 1.2;
 }
 
+h3 {
+  color: var(--flame);
+}
+
 /* header styles start */
 
 header {
@@ -114,6 +118,14 @@ header {
 }
 
 @media (max-width: 55em) {
+  header {
+    padding-block: 0.3rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--ink);
+  }
+
   .primary-navigation {
     position: fixed;
     inset: 0 0 0 30%;
@@ -281,7 +293,7 @@ header {
 
 .services-grid {
   display: grid;
-  gap: 20px;
+  gap: 30px;
 
   grid-template-columns: repeat(2, 1fr);
 
@@ -292,15 +304,21 @@ header {
 
 .service {
   border-radius: 12px;
-  padding: 1rem;
-  transition: transform 0.3s ease-in-out;
+  padding: 3rem;
+
   cursor: pointer;
+
+  display: grid;
+  gap: 20px;
+  align-content: center;
+
+  transition: all 0.3s ease-in-out;
 
   background: linear-gradient(
     -135deg,
-    var(--charcoal) 20%,
-    var(--void) 50%,
-    var(--flame) 100%
+    var(--void) 20%,
+    var(--charcoal) 50%,
+    var(--void) 100%
   );
 
   p {
@@ -310,6 +328,7 @@ header {
 
 .service:hover {
   transform: scale(1.05) translateY(5px);
+  box-shadow: 0 5px 12px -5px var(--mist);
 }
 
 /* services section end  */
@@ -328,17 +347,22 @@ header {
 }
 .how-it-works-card {
   border-radius: 12px;
-  padding: 1rem;
+  padding: 2.7rem;
   transition: transform 0.3s ease-in-out;
   cursor: pointer;
   background: linear-gradient(
     -135deg,
+    var(--ink) 20%,
     var(--charcoal) 20%,
-    var(--void) 50%,
-    var(--gold) 100%
+    var(--void) 100%
   );
   position: relative;
+  z-index: 0;
   overflow: hidden;
+
+  display: grid;
+  gap: 20px;
+  align-content: center;
 
   p {
     font-size: 16px;
@@ -347,9 +371,10 @@ header {
   i {
     font-size: 4rem;
     position: absolute;
-    bottom: -15px;
+    top: 0px;
     right: 5px;
     color: var(--mist);
+    z-index: -1;
   }
 }
 
@@ -363,7 +388,7 @@ header {
 
 .pricing-grid {
   display: grid;
-  gap: 20px;
+  gap: 30px;
 
   grid-template-columns: repeat(2, 1fr);
 
@@ -373,7 +398,7 @@ header {
 }
 
 .pricing-card {
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 12px;
 
   transition: transform 0.3s ease-in-out;
@@ -462,12 +487,10 @@ header {
 }
 
 .work-card {
-  background: hsl(0, 0, 100% / 0.2);
+  background-color: var(--void);
   border-radius: 12px;
 
   overflow: clip;
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--mist);
   transition: transform 0.3s ease-in-out;
 }
 
@@ -489,7 +512,7 @@ header {
 
 .work-card-foot a {
   padding: 0.5rem;
-  background-color: var(--void);
+  background-color: var(--ink);
   border-radius: 10px;
   color: var(--flame);
   text-decoration: none;
@@ -506,35 +529,37 @@ header {
 /* testimonials  */
 
 .testimonial-card {
-  border: 1px solid var(--mist);
   border-radius: 10px;
-  padding: 0.5rem;
+  padding-block: 2rem;
+  padding-inline: 2rem;
   background-color: var(--void);
 
-  background: url("../images/icons/bg-pattern-quotation.svg") var(--void);
+  /* background: url("../images/icons/bg-pattern-quotation.svg") var(--void);
   background-position: right top -15px;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
 
   i {
-    font-size: 1.5rem;
+    font-size: 10px;
     color: var(--gold);
   }
-
-  i:nth-child(even) {
-    transform: translateY(-5px);
-  }
-  i:nth-child(3) {
-    transform: translateY(-10px);
-  }
-}
-
-.testimonial-head {
-  padding-block: 0.5rem;
-  text-align: center;
 }
 
 .testimonial-body {
-  text-align: center;
+  /* text-align: center; */
+  position: relative;
+  padding-inline: 1rem;
+
+  p::before {
+    content: "";
+    height: 40px;
+    width: 40px;
+    background-image: url(../images/icons/bg-pattern-quotation.svg);
+    background-size: 20px;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: -15px;
+    left: 3px;
+  }
 }
 
 .testimonial-foot {
@@ -572,10 +597,6 @@ div.contact-actions {
   @media (width < 48em) {
     grid-template-columns: 1fr;
   }
-}
-
-.contact-info {
-  padding: 1rem;
 }
 
 .contact-info > * {
@@ -766,6 +787,29 @@ input[type="submit"] {
 
 .footer-legal-list li:nth-last-child(2) {
   flex: 1;
+}
+
+footer::after {
+  content: "";
+  height: 5px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--flame) 50%, var(--gold) 100%);
+  inset-inline-start: 0; /*  logical property for left  */
+  inset-block-end: 0; /*  logical property for bottom  */
+  position: fixed;
+  transform-origin: bottom left;
+  z-index: 1999;
+  animation: grow-progress linear;
+  animation-timeline: scroll();
+}
+
+@keyframes grow-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
 }
 
 /* utility classes  */
