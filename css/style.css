@@ -129,6 +129,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 10;
+    background: var(--ink);
   }
 
   .primary-navigation {
@@ -522,6 +523,7 @@ header {
 
 .work-card-foot a {
   padding: 0.5rem;
+  margin-block-end: 1rem;
   background-color: var(--ink);
   border-radius: 10px;
   color: var(--gold);
