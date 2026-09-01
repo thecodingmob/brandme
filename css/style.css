@@ -215,6 +215,11 @@ header {
   padding-block-end: 0.6rem;
   padding-inline-start: 0.6rem;
 }
+/* 
+.logo > img {
+  width: 100px;
+  height: 100px;
+} */
 /* header styles end  */
 
 /* hero section start */
